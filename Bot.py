@@ -474,5 +474,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         bot_me = await context.bot.get_me()
         bot_username = bot_me.username
         is_mentioned = "zyra" in user_message.lower() or f"@{bot_username}" in user_message.lower()
-        is_reply = (update.message.reply_to_message and 
+        is_reply = (
+    update.message.reply_to_message and
+    update.message.reply_to_message.from_user.id == bot_me.id
+)
                    update.mes
